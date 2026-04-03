@@ -126,4 +126,4 @@ npm run dev
 
 ---
 
-⭐ *Developed as a modern Full-Stack showcase for technical interviews.*
+⭐ *Thank you for visiting.*
