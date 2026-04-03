@@ -1,93 +1,129 @@
-# ConnectGo
+# 🚀 ConnectGo | Full-Stack Event Management System
 
-ConnectGo is a full-stack event management system built with React, Spring Boot, and MySQL. The original repository link you shared was unavailable, so this workspace was scaffolded as a complete production-style replacement with the requested stack.
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-F27336?style=for-the-badge&logo=spring-boot&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-## Stack
+ConnectGo is a **production-ready event management platform** featuring a cinematic **Netflix-style glassmorphic UI**.  
+It allows users to **discover and book events** while providing administrators with a secure **JWT-authenticated suite** for event orchestration and attendee tracking.
 
-- Frontend: React + Vite + React Router + Axios
-- Backend: Spring Boot + Spring Security + JWT + Spring Data JPA
-- Database: MySQL 8
-- Docs: Swagger UI
-- Containers: Docker Compose
+---
 
-## Features
+# 🧠 Engineering Highlights
 
-- JWT authentication with admin and user roles
-- Admin bootstrap account on first run
-- Public event listing
-- Admin event creation, update, and deletion APIs
-- User event registration
-- Personal registration dashboard
-- Admin attendee overview
-- Dockerized frontend, backend, and database
+- **Secure Authentication:** Implemented **Spring Security with JWT** for stateless authorization, featuring distinct `ROLE_USER` and `ROLE_ADMIN` permissions.
+- **Data Integrity:** Utilized **JPA Unique Constraints** on the `Registration` entity to prevent duplicate bookings at the database level.
+- **Centralized Error Handling:** Integrated a `@RestControllerAdvice` global exception handler to standardize API responses and improve frontend resilience.
+- **Modern Frontend:** Built with **React + Vite** for lightning-fast HMR, featuring custom CSS-in-JS glassmorphism, mobile responsiveness, and skeleton loaders.
+- **Dockerized Ecosystem:** The entire stack (**Frontend, Backend, and MySQL**) is containerized for seamless **one-command deployment** via Docker Compose.
 
-## Project structure
+---
 
-- [backend](backend)
-- [frontend](frontend)
-- [docker-compose.yml](docker-compose.yml)
+# ✨ Core Features
 
-## Default credentials
+- **JWT Auth:** Secure Login/Register with password encryption.
+- **Admin Bootstrap:** Automatic admin account creation on the first run.
+- **Event Discovery:** Public listing with real-time capacity tracking (*Sold Out states*).
+- **Management Suite:** Full CRUD operations for events (**Admin only**).
+- **User Dashboard:** Personal registration tracking and management.
+- **Attendee Overview:** Real-time feed of all event registrations for admins.
 
-- Admin email: `admin@connectgo.dev`
-- Admin password: `Admin@123`
+---
 
-## Local development
+# 🛠️ Tech Stack
 
-### 1. Start MySQL
+- **Frontend:** React, Vite, Axios, Context API, FontAwesome
+- **Backend:** Java 17, Spring Boot, Spring Security, Spring Data JPA, Hibernate
+- **Database:** MySQL 8
+- **Documentation:** Swagger UI (OpenAPI 3)
+- **DevOps:** Docker, Docker Compose
 
-Use Docker:
+---
 
-```bash
-docker compose up mysql -d
-```
+# 🏃 Getting Started
 
-Or run a local MySQL instance matching [.env.example](.env.example).
+## Default Admin Credentials
 
-### 2. Run the backend
+- **Email:** `admin@connectgo.dev`
+- **Password:** `Admin@123`
 
-From [backend](backend):
+---
 
-```bash
-mvn spring-boot:run
-```
-
-Backend URL: http://localhost:8080
-
-Swagger UI: http://localhost:8080/swagger-ui.html
-
-### 3. Run the frontend
-
-From [frontend](frontend):
-
-```bash
-npm install
-npm run dev
-```
-
-Frontend URL: http://localhost:5173
-
-## Full Docker run
+## 🐳 Full Docker Run (Recommended)
 
 From the project root:
 
 ```bash
-docker compose up --build
+docker-compose up --build
 ```
 
-## Main API endpoints
+Frontend:
+```
+http://localhost:5173
+```
 
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `GET /api/events`
-- `GET /api/events/{id}`
-- `POST /api/events` (admin)
-- `PUT /api/events/{id}` (admin)
-- `DELETE /api/events/{id}` (admin)
-- `POST /api/registrations/events/{eventId}`
-- `GET /api/registrations/me`
-- `GET /api/registrations` (admin)
+Backend:
+```
+http://localhost:8080
+```
 
-## Environment
+---
 
-Copy [.env.example](.env.example) and adjust as needed for local deployment.
+## 💻 Local Development
+
+### 1. Start MySQL
+Ensure a MySQL instance is running matching the `.env` configuration.
+
+### 2. Run Backend
+
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+Swagger UI:
+```
+http://localhost:8080/swagger-ui.html
+```
+
+### 3. Run Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+# 🛰️ Main API Endpoints
+
+| Method | Endpoint | Access |
+|------|------|------|
+| POST | `/api/auth/register` | Public |
+| POST | `/api/auth/login` | Public |
+| GET | `/api/events` | Public |
+| POST | `/api/events` | **Admin** |
+| DELETE | `/api/events/{id}` | **Admin** |
+| POST | `/api/registrations/events/{eventId}` | User |
+| GET | `/api/registrations/me` | User |
+| GET | `/api/registrations` | **Admin** |
+
+---
+
+# 📸 Visual Showcase
+
+<p align="center">
+  <img src="images/home.png" width="45%" alt="Home Page" />
+  <img src="images/dashboard.png" width="45%" alt="Dashboard" />
+</p>
+
+<p align="center">
+  <img src="images/events.png" width="45%" alt="Event Listings" />
+  <img src="images/login.png" width="45%" alt="Authentication" />
+</p>
+
+---
+
+⭐ *Developed as a modern Full-Stack showcase for technical interviews.*
